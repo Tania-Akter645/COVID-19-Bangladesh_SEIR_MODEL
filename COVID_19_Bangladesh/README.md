@@ -24,12 +24,12 @@ pip install -r requirements.txt
 ✅ Usage
 Run the following files as needed:
 
-python preprocessing.py
-python exploratory_analysis.py
-python seir_simulation.py
-python forecasting_SEIR.py
+- python preprocessing.py
+- python exploratory_analysis.py
+- python seir_simulation.py
+- python forecasting_SEIR.py
 
 📌 Author
-Tania Akter Rahima
-M.Sc. in Mathematics
-Jahangirnagar University
+- Tania Akter Rahima
+- M.Sc. in Mathematics
+- Jahangirnagar University
