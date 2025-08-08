@@ -1,6 +1,7 @@
 #Author=Tania Akter Rahima
-import pandas as pd
 
+
+import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from preprocessing import load_and_clean_data
@@ -44,7 +45,7 @@ plt.ylabel('Number of daily quarantine')
 plt.legend()
 plt.xticks(rotation=45)
 plt.tight_layout()
-plt.savefig('report/figures/daily_quarantine.png')  # Save figure
+plt.savefig('report/figures/daily_quarantine.png')  # Save figure to the report file
 plt.show()
 
 # 4. Correlation Heatmap
@@ -53,9 +54,9 @@ corr = df[['daily_confirmed', 'daily_deaths', 'daily_recovered', 'daily_quaranti
 sns.heatmap(corr, annot=True, cmap='coolwarm')
 plt.title('Correlation Heatmap')
 plt.tight_layout()
-plt.savefig('report/figures/correlation_heatmap.png')  # Save figure
+plt.savefig('report/figures/correlation_heatmap.png')  # Save figure to the report file
 plt.show()
-# SEIR Model function (for simulation)
+# SEIR Model function (for simulation) using differentiation equation
 def seir_model(y, t, beta, sigma, gamma):
     S, E, I, R = y
     dSdt = -beta * S * I / 165_000_000  # Bangladesh approx population
@@ -63,3 +64,15 @@ def seir_model(y, t, beta, sigma, gamma):
     dIdt = sigma * E - gamma * I
     dRdt = gamma * I
     return dSdt, dEdt, dIdt, dRdt
+
+## y is the current state: S,E,I,R
+# Where:
+# S = Susceptible
+# E = Exposed
+# I = Infectious
+# R = Recovered
+# t is the time (automatically passed by odeint during integration)
+# N = Total population
+# beta = Transmission rate
+#sigma = Rate at which exposed individuals become infectious (E → I).This represents the inverse of the incubation period.
+#gamma = Recovery rate (I → R).This represents the inverse of the infectious period.
